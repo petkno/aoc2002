@@ -7,12 +7,15 @@ plugins {
 group = "org.iits.petkno"
 version = "1.0-SNAPSHOT"
 
+val koTestAssertionVersion = "5.4.2"
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation("io.kotest:kotest-assertions-core:$koTestAssertionVersion")
 }
 
 tasks.test {
@@ -21,4 +24,8 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
