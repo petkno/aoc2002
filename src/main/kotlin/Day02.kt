@@ -1,4 +1,3 @@
-
 class Day02 {
     enum class RockPaperScissors(val score: Int) {
         ROCK(1) {
@@ -70,25 +69,21 @@ class Day02 {
         }
     }
 
-    fun part1(input: List<String>) =
-        input.sumOf {
-            val play = it.split(" ")
-            val opponent = RockPaperScissors.getBy(play.first())
-            val hand = RockPaperScissors.getBy(play.last())
-
+    fun part1(input: List<String> ) = input
+        .map { it.split(" ") }
+        .map { (l, r) -> RockPaperScissors.getBy(l) to RockPaperScissors.getBy(r) }
+        .sumOf { (opponent, hand) ->
             hand.playScore(opponent)
         }
 
+    fun part2(input: List<String>) = input
+        .map { it.split(" ") }
+        .map { (l, r) ->
+            val opponent = RockPaperScissors.getBy(l)
 
-    fun part2(input: List<String>) =
-        input.sumOf {
-            val play = it.split(" ")
-            val opponent = RockPaperScissors.getBy(play.first())
-            val results = Results.byPlayresult(play.last())
-            val hand = opponent.chooseForResult(results)
-
-            hand.playScore(opponent)
+            opponent to opponent.chooseForResult(Results.byPlayresult(r))
         }
+        .sumOf { (opponent, hand) -> hand.playScore(opponent) }
 }
 
 fun main() {
