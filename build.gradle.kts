@@ -7,7 +7,7 @@ plugins {
 group = "org.iits.petkno"
 version = "1.0-SNAPSHOT"
 
-val koTestAssertionVersion = "5.4.2"
+val koTestAssertionVersion = "5.5.4"
 
 repositories {
     mavenCentral()
@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation("io.kotest:kotest-runner-junit5:$koTestAssertionVersion")
     testImplementation("io.kotest:kotest-assertions-core:$koTestAssertionVersion")
 }
 
