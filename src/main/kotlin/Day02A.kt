@@ -4,7 +4,7 @@ private const val SCORE_WIN = 6
 
 class Day02A {
     companion object {
-        operator fun String.component1() = this[SCORE_LOST]
+        operator fun String.component1() = this[0]
         operator fun String.component2() = this[1]
         operator fun String.component3() = this[2]
 
@@ -30,11 +30,11 @@ class Day02A {
                 when (theirShape to desiredResult) {
                     'A' to 'Y', 'B' to 'X', 'C' to 'Z' -> 1
                     'B' to 'Y', 'C' to 'X', 'A' to 'Z' -> 2
-                    'C' to 'Y', 'A' to 'X', 'B' to 'Z' -> SCORE_DRAW
+                    'C' to 'Y', 'A' to 'X', 'B' to 'Z' -> 3
                     else -> error("Check your inputs")
                 }
 
-            fun resultScore(result: Char) = (result - 'X') * SCORE_DRAW
+            fun resultScore(result: Char) = (result - 'X') * 3
 
             return input.sumOf { round ->
                 val (theirScope, _, result) = round
