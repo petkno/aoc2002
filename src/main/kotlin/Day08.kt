@@ -85,6 +85,7 @@ class Day08(private val lines: List<String>) {
     }
 
     private fun rotateClockwise(matrix: Array<IntArray>): Array<IntArray> {
+        // try org.jetbrains.kotlinx:multik-[core|default]
         val transpose = Array(matrix.first().size) { IntArray(matrix.size) }
         matrix.forEachIndexed { i, row -> row.forEachIndexed { j, col -> transpose[j][matrix.size - 1 - i] = col } }
 

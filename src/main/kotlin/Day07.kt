@@ -1,5 +1,5 @@
 class Day07(lines: List<String>) {
-    private val sizes = buildMap {
+    private val sizes = buildMap<String, Int> {
         put("", 0)
         var currentDir = ""
         for (line in lines) {
@@ -15,7 +15,9 @@ class Day07(lines: List<String>) {
                 val size = line.substringBefore(" ").toInt()
                 var dir = currentDir
                 while (true) {
-                    put(dir, getOrElse(dir) { 0 } + size)
+//                    put(dir, getOrElse(dir) { 0 } + size)
+                    put(dir, getOrDefault(dir, 0) + size)
+//                    compute(dir) { _, previousValue -> previousValue ?: 0 + size }
                     if (dir.isEmpty()) break
                     dir = dir.substringBeforeLast('/', "")
                 }
