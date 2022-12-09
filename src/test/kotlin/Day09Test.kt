@@ -17,4 +17,16 @@ class Day09Test : FreeSpec({
             }
         }
     }
+
+    "part2" - {
+        listOf(
+            listOf("R 5") to 1,
+            listOf("R 5", "U 8") to 1,
+            listOf("R 5", "U 8", "L 8", "D 3", "R 17", "D 10", "L 25", "U 20") to 36,
+        ).forEach { (motions: List<String>, result: Int) ->
+            "is play $motions should to $result" {
+                Day09(motions).part2() shouldBe result
+            }
+        }
+    }
 })
